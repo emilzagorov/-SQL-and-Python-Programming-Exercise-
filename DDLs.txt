@@ -1,0 +1,124 @@
+-- A domain to limit the values of category type to "fiction" or "non-fiction"
+CREATE DOMAIN CategoryType AS VARCHAR(20)
+	CHECK (VALUE IN('fiction', 'Non-fiction'));
+
+CREATE TABLE Category
+(	
+	CategoryID			INTEGER PRIMARY KEY,
+
+	Name				VARCHAR(50) NOT NULL UNIQUE,
+
+	CategoryType 			CategoryType 	NOT NULL 
+)
+;
+
+CREATE TABLE SalesRep
+(	
+	SalesRepID		INTEGER PRIMARY KEY,
+
+	Name			VARCHAR(50) NOT NULL UNIQUE
+)
+;
+
+CREATE TABLE Shop
+(
+	ShopID			INTEGER PRIMARY KEY,
+
+	Name			VARCHAR(50) NOT NULL 
+)
+;
+
+CREATE TABLE Publisher
+(	
+	PublisherID		INTEGER PRIMARY KEY,
+
+	Name			VARCHAR(50) NOT NULL UNIQUE
+)
+;
+
+CREATE TABLE Book
+(
+	BookID			INTEGER PRIMARY KEY,
+
+	Title			VARCHAR(50) NOT NULL,
+
+	Price			DECIMAL(10,2) NOT NULL,
+
+	CategoryID		INTEGER,
+
+	PublisherID		INTEGER,
+
+	FOREIGN KEY (CategoryID) REFERENCES Category ON DELETE RESTRICT,
+
+	FOREIGN KEY (PublisherID) REFERENCES Publisher ON DELETE RESTRICT
+)
+;
+
+CREATE TABLE ShopOrder
+(
+	ShopOrderID		INTEGER PRIMARY KEY,
+
+	OrderDate		DATE NOT NULL,
+
+	ShopID			INTEGER,
+
+	SalesRepID		INTEGER,
+
+	FOREIGN KEY (ShopID) REFERENCES Shop ON DELETE RESTRICT,
+
+	FOREIGN KEY (SalesRepID) REFERENCES SalesRep ON DELETE RESTRICT
+)
+;
+
+CREATE TABLE Orderline
+(
+	ShopOrderID		INTEGER,
+
+	BookID			INTEGER,
+
+	Quantity		INTEGER NOT NULL,
+
+	UnitSellingPrice	DECIMAL (10,2) NOT NULL, 
+
+	CONSTRAINT Orderline_pk PRIMARY KEY (ShopOrderID, BookID),
+
+	FOREIGN KEY (ShopOrderID) REFERENCES ShopOrder ON DELETE RESTRICT,
+
+	FOREIGN KEY (BookID) REFERENCES Book ON DELETE RESTRICT
+)
+;
+
+
+--______________________________________________________
+		--Functions & Views
+
+--TASK 1
+-- Function add_category() is implemented for adding new categories to the category table
+CREATE FUNCTION add_category(INTEGER, VARCHAR(50), VARCHAR(20)) 
+RETURNS void AS 'INSERT INTO CATEGORY VALUES ($1, $2, $3);'
+LANGUAGE SQL;
+
+
+--TASK 2
+-- Function remove_category() is implemented for removing categories from the category table
+CREATE FUNCTION remove_category(INTEGER) RETURNS VOID AS
+'DELETE FROM CATEGORY WHERE CATEGORYID = $1;'
+LANGUAGE SQL;
+
+
+--TASK 3
+-- A view of the books grouped by category
+CREATE VIEW summary_report_of_books AS
+SELECT COUNT(title) AS Number_Of_Titles, AVG(price) AS Average_Price 
+FROM Category, Book
+WHERE Category.CategoryID = Book.CategoryID
+GROUP BY BOOK.categoryid;
+
+
+--TASK 7
+-- Function apply_discount() is implemented for applying discount to a category of books
+CREATE FUNCTION apply_discount(INTEGER, INTEGER) RETURNS VOID AS
+' UPDATE Book Set Price = Price - (Price * $2 / 100) 
+WHERE CategoryID = $1; '
+LANGUAGE SQL;
+

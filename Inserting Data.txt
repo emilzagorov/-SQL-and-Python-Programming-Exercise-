@@ -1,0 +1,48 @@
+-- Category
+INSERT INTO Category Values
+	(60,'Science fiction','fiction'), (61,'Drama','fiction'), (62,'Action and Adventure','fiction'), (63,'Romance','fiction'), (64,'Mystery','fiction'),(65,'Horror','fiction'), (66,'Self help','Non-fiction'), (67,'Health','Non-fiction'), (68,'Guide','Non-fiction'), (69,'Travel','Non-fiction'), (70,'Children','fiction'), (71,'Fantacy','fiction'), (72,'Religion, Spirituality & New Age','Non-fiction'), (73,'Science','Non-fiction'), (74,'History','Non-fiction'), (75,'Math','Non-fiction'), (76,'Poetry','fiction'),(77,'Dictionaries','Non-fiction'), (78,'Comics','fiction'), (79,'Art','Non-fiction');
+
+SELECT * FROM  CATEGORY;
+
+--SalesRep
+INSERT INTO SALESREP VALUES 
+	(100,'John Dryer'), (101,'Danny Copping'), (102,'William Armstrong'), (103,'Helen Bingham'), (104,'James Halliday'), (105,'Victoria Gregg'), (106,'Julian Kahn'), (107,'Katherine Johnston'), (108,'James Tulloch'), (109,'Robert Wallace');
+
+SELECT * FROM SALESREP;
+
+-- Shop
+INSERT INTO Shop VALUES
+	(300,'Bookpeople'), (301,'Alibris'), (302,'66 Books'), (303,'Diamond Comic'), (304,'Digi-Tall Media'), (305,'Capital City'), (306,'Follett'), (307,'Greenleaf Book'), (308,'Ingram Content'), (309,'Last Gasp'), (310,'Midpoint Trade Books'), (311,'New Leaf'), (312,'Perseus Books'), (313,'Send the Light'), (314,'Readerlink'), (315,'Small Press'), (316,'Smashwords'), (317,'TAN Books'), (318,'Texas Bookman'), (319,'Tuttle');
+
+SELECT * FROM SHOP;
+
+--Publisher
+INSERT INTO Publisher VALUES 
+	(300, 'Ace Books'), (301, 'A. S. Barnes'), (302, 'The Good Book Company'), (303, 'Harvard University Press'), (304, 'Ian Allan Publishing'), (305, 'John Lane'), (306, 'Liverpool University Press'), (307, 'Rock Scorpion Books'), (308, 'Rowman & Littlefield'), (309, 'Scribner'), (310, 'Shire Books'), (311, 'World Publishing Company'), (312, 'Marshall Cavendish'), (313, 'Michael Joseph'), (314, 'Macmillan Publishers');
+
+
+SELECT * FROM PUBLISHER;
+
+
+-- Book
+INSERT INTO Book VALUES 
+	(600, 'Night of Flying', 20.50, 60, 300), (601, 'The First Nobody', 15.00, 60, 300), (602, 'Missing Women', 7.3, 61, 301), (603, 'The Thefts Time', 10.8, 61, 301), (604, 'The Servant of the Savior', 12.5, 62, 302), (605, 'Snow of Beginning', 25.00, 62, 302), (606, 'Rough Heart', 4.5, 63, 303), (607, 'Stars in the Dream', 15.7, 63, 303), (608, 'The Missing Snake', 9.5, 64, 304), (609, 'Destiny in the Husband', 23.99, 64, 304), (610, 'The Kissing Window', 20.00, 65, 305), (611, 'Search in the Servants', 14.3, 65, 305), (612, 'River of Words', 18.5, 66, 306), (613, 'Sleeping Prophecy', 9.99, 66, 306), (614, 'Bridge in the Heart', 11.3, 67, 307), (615, 'The Splintered Spirits', 7.00, 67, 307), (616, 'Visions of Wizards', 16.6, 68, 308), (617, 'Waves of Sex', 23.5, 68, 308), (618, 'Beauties of Norwich', 5.5, 69, 309), (619, 'How to experience Paris', 10.00, 69, 309), (620, 'The Only Gate', 8.99, 70, 310), (621, 'The Grey Valley', 13.3, 70, 310), (622, 'Ship of Fire', 19.99, 71, 311), (623, 'Ashes of Wings', 25.5, 71, 311), (624, 'The Mist of the Spirit', 9.4, 72, 312), (625, 'The Wave of the Dying', 14.00, 72, 312), (626, 'Some physics for dummies', 28.5, 73, 313), (627, 'Biology is really fun for doctors', 29.99, 73, 313), (628, 'The Witches of Princess', 21.00, 74, 314), (629, 'The Secrets of the Flame', 19.5, 74, 314), (630, 'Math is fun', 20.00, 75, 300), (631, 'Some math for dummies', 23.5, 75, 309), (632, 'Bridge of Girlfriend', 27.99, 76, 301), (633, 'Last Rainbow', 8.5, 76, 311), (634, 'Oxford dictionary', 15.4, 77, 306), (635, 'Collins English Dictionary', 20.7, 77, 303), (636, 'Batman and Joker', 15.5, 78, 302), (637, 'Spiderman is not dead', 10.00, 78, 307), (638, 'The art of France', 14.99, 79, 310), (639, 'Video games are art', 22.2, 79, 313);
+
+
+SELECT * FROM Book;
+
+
+--ShopOrder
+INSERT INTO ShopOrder VALUES
+	(1000, '2015-12-20', 300, 104), (1001, '2016-01-05', 305, 105),(1002, '2016-01-08', 309, 107), (1003, '2016-01-15', 304, 102), (1004, '2016-01-17', 303, 108), (1005, '2016-01-27', 310, 101), (1006, '2016-01-30', 312, 107), (1007, '2016-02-03', 318, 106), (1008, '2016-02-09', 317, 100), (1009, '2016-02-19', 315, 105), (1010, '2016-02-24', 308, 101), (1011, '2016-02-28', 311, 109), (1012, '2016-03-01', 319, 106), (1013, '2016-03-08', 306, 100), (1014, '2016-03-14', 304, 103) ;
+
+
+SELECT * FROM ShopOrder;
+
+
+--OrderLine
+INSERT INTO Orderline VALUES
+	(1000, 612, 20, 18.00), (1000, 616, 13, 16.20), (1007, 613, 26, 8.5), (1007, 629, 10, 19.00), (1007, 637, 23, 9.8), (1014, 634, 17, 15.20), (1004, 631, 6, 23.50), (1004, 625, 28, 13.8), (1004, 627, 17, 29.8), (1004, 600, 14, 20.30), (1012, 602, 21, 7.10), (1012, 629, 20, 19.00), (1009, 606, 8, 4.40), (1002, 614, 16, 11.10), (1002, 611, 11, 14.20), (1002, 618, 19, 5.30), (1014, 615, 12, 6.80), (1014, 600, 24, 20.20), (1014, 603, 17, 10.60), (1014, 601, 20, 14.70), (1014, 605, 24, 24.80), (1010, 608, 13, 9.4), (1010, 639, 27, 21.60), (1002, 636, 25, 15.20), (1011, 633, 18, 8.40), (1011, 635, 22, 20.40), (1011, 638, 11, 9.80), (1006, 603, 10, 10.60), (1006, 607, 12, 15.50);
+
+SELECT * FROM Orderline;
+
