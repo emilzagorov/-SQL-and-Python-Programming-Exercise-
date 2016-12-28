@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Home</title>
+	<style type="text/css">
+		body{
+			font-family: Arial;
+			background-color: hsl(210, 98%, 74%);
+		}
+
+		h1{
+			text-align: center;
+			color: hsl(420, 77%, 32%);			
+		}
+
+		ul{			
+			margin-bottom: 55px;			
+			text-align: center;
+			margin-top: 40px;
+		}
+
+		li{						
+			list-style: none;
+			display: inline-block;			
+
+		}
+
+		ul a{
+			color: hsl(214, 64%, 27%);
+			text-decoration: none;
+			display: inline-block;
+			font-size: 120%;
+			margin-left: 30px;
+			margin-right: 70px;
+		} ul a:hover{
+			color: hsl(18, 51%, 38%);
+			text-decoration: underline;
+			font-weight: bold;
+		}
+
+		#nav-forms{
+			width: 50%;
+			margin: 0 auto;			
+		}
+
+		#nav-forms a{
+			background-color: hsl(49, 68%, 61%);
+			text-decoration: none;
+			font-size: 103%;
+			border: 1px solid hsl(169, 77%, 44%);
+			padding: 14px;
+			display: inline-block;
+			color: hsl(289, 79%, 48%);
+			margin-bottom: 7px;
+		} #nav-forms a:hover{
+			background-color: hsl(289, 79%, 48%);
+			color: hsl(49, 68%, 61%);
+			text-decoration: underline;
+		}
+
+		.right{
+			float: right;
+		}
+
+		#forms{
+			width: 50%;
+			margin: 0 auto;
+			margin-top: 200px;
+			box-sizing: border-box;			
+			text-align: center;			
+		}
+
+		#forms h2{
+			margin-bottom: 40px;
+		}
+
+		.form-structure{
+			color: white;
+			padding: 20px;
+			border-radius: 15px;
+			background-color: rgba(0, 0, 0, .5);
+			margin-bottom: 30px;
+		}
+
+		.form-structure input{
+			margin: 8px;
+			border-radius: 5px;
+			font-size: 105%;
+
+		}
+
+		.submit{
+			background-color: grey;
+			color: white;
+			cursor: pointer;
+		}
+
+		#message{
+			color: red;
+			text-align: center;			
+			display: block;
+		}
+	</style>	
+</head>
+<body>
+		
+	<h1>Home</h1>	
+
+	<ul>
+		<li><a href="/">Home</a></li>		
+	</ul>
+
+	<h2 id="message">{{message}}</h2>
+
+	<div id="nav-forms">		
+		<a href="#task-1-form">Add a new category</a>
+		<a href="#task-2-form" class="right">Remove a category</a><br/>
+		<a href="#task-3-form">Report of books based on category</a>
+		<a href="#task-4-form" class="right">Report of books based on publisher</a><br/>
+		<a href="#task-5-form">Order history of a book</a>
+		<a href="#task-6-form" class="right">Report of sales representatives</a><br/>
+		<a href="#task-7-form">Apply discount based on category</a>
+	</div>
+
+
+	<div id="forms">
+
+		<div id="task-1-form" class="form-structure">
+			<form action="addCategory" method="post">
+				<h2>Add a new category</h2>
+				<label for="categoryID">Category ID:</label><br />
+				<input type="number" id="categoryID" name="categoryID" placeholder="Category ID" required /><br />
+				<label for="categoryName">Category Name:</label><br />
+				<input type="text" id="categoryName" name="categoryName" placeholder="Category Name" required /><br />
+				<label for="categoryType">Category Type:</label><br />
+				<input type="text" id="categoryType" name="categoryType" placeholder="fiction or Non-fiction" required /><br /><br />
+				<input type="submit" class="submit" />
+			</form>
+		</div>
+
+		<div id="task-2-form" class="form-structure">
+			<form action="removeCategory" method="post">
+				<h2>Remove a category</h2>
+				<label for="categoryID2">Category ID:</label><br />
+				<input type="number" id="categoryID2" name="categoryID" placeholder="Category ID" required /><br /><br />
+				<input type="submit" class="submit" />
+			</form>
+		</div>
+
+		<div id="task-3-form" class="form-structure">
+			<form action="summaryReport" method="get">
+				<h2>Report of books based on category</h2>				
+				<input type="submit" class="submit" value="Produce" />
+			</form>
+		</div>
+
+		<div id="task-4-form" class="form-structure">
+			<form action="bookReport" method="post">
+				<h2>Report of books based on publisher</h2>
+				<label for="publisherName">Publisher Name:</label><br />
+				<input type="text" id="publisherName" name="publisherName" placeholder="Publisher Name" required /><br /><br />
+				<input type="submit" class="submit" />
+			</form>
+		</div>
+
+		<div id="task-5-form" class="form-structure">
+			<form action="bookOrderHistory" method="post">
+				<h2>Order history of a book</h2>
+				<label for="BookID">Book ID:</label><br />
+				<input type="number" id="BookID" name="BookID" placeholder="Book ID" required /><br /><br />
+				<input type="submit" class="submit" />
+			</form>
+		</div>
+
+		<div id="task-6-form" class="form-structure">
+			<form action="repPreformanceReport" method="post"> 
+				<h2>Report of sales representatives</h2>
+				<label for="startDate">Start Date:</label><br />
+				<input type="date" id="startDate" name="startDate" required /><br />				
+				<label for="endDate">End Date:</label><br />
+				<input type="date" id="endDate" name="endDate" required /><br /><br />
+				<input type="submit" class="submit" />
+			</form>
+		</div>
+
+		<div id="task-7-form" class="form-structure">
+			<form action="applyDiscount" method="post">
+				<h2>Apply discount based on category</h2>
+				<label for="categoryID3">Category ID:</label><br />
+				<input type="number" id="categoryID3" name="categoryID3" placeholder="Category ID" required /><br />				
+				<label for="discount">Discount:</label><br />
+				<input type="number" id="discount" name="discount" placeholder="0-100" min="0" max="100" required /><br /><br />
+				<input type="submit" class="submit" />
+			</form>
+		</div>		
+
+	</div>
+	
+</body>
+</html>

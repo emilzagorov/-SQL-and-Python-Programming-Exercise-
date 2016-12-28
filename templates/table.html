@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Table</title>
+	<style type="text/css">
+		body{
+			font-family: Arial;
+			background-color: hsl(210, 98%, 74%);
+		}
+
+		h1{
+			text-align: center;
+			color: hsl(420, 77%, 32%);			
+		}
+
+		ul{			
+			margin-bottom: 55px;			
+			text-align: center;
+			margin-top: 40px;
+		}
+
+		li{						
+			list-style: none;
+			display: inline-block;			
+
+		}
+
+		ul a{
+			color: hsl(214, 64%, 27%);
+			text-decoration: none;
+			display: inline-block;
+			font-size: 120%;
+			margin-left: 30px;
+			margin-right: 70px;
+		} ul a:hover{
+			color: hsl(18, 51%, 38%);
+			text-decoration: underline;
+			font-weight: bold;
+		}
+
+		#tableContainer{
+			text-align: center;
+			width: 60%;
+			margin: 0 auto;	
+		}
+
+		#message{
+			color: red;
+			text-align: center;			
+			display: block;
+		}
+
+		table th,td{
+			padding: 7px;
+		}
+	</style>	
+</head>
+<body>
+	
+	<h1>Table</h1>
+
+	<ul>
+		<li><a href="/">Home</a></li>		
+	</ul>
+	
+	<h2 id="message">{{message}}</h2>
+
+	<div id="tableContainer">
+
+		<table border = 1 align="center">
+				{% for colName in colNames %}
+            <th> 
+            	{{colName}} 
+            </th>
+            	{% endfor %}
+				{% for row in rows %}
+			<tr>
+				{% for item in row%}
+			<td>
+				{{item}}
+			</td>
+				{% endfor %}
+			</tr>
+				{% endfor %}
+		</table>
+
+	</div>
+	
+
+</body>
+</html>
